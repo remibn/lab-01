@@ -166,11 +166,11 @@ visitors %>%
 _Perform the same calculation for the 2021 admissions data._
 
 ```{r Ex_h}
-#visitors %>% 
-#  ______(
-#    __________,
-#    __________
-#  )
+visitors %>% 
+  summarise(
+    mean_2021 = mean(n_2021),
+    med_2021 = median(n_2021)
+  )
 ```
 
 All values in the output are `NA`!
@@ -181,7 +181,7 @@ _What does `NA` stand for and why are you getting this as your answer to the pre
 
 **Write your answer here**
 
-
+NA stands for "not available", which R uses to represent missing / unavailable data.
 
 
 ### Exercise j.
@@ -190,8 +190,21 @@ _Look at the help pages for the `mean()` and `median()` commands to see what the
 
 **Write your answer here**
 
+```{r Ex_j}
+visitors %>% 
+  summarise(
+    mean_2021 = mean(n_2021, na.rm=TRUE),
+    med_2021 = median(n_2021, na.rm=TRUE)
+  )
+```
 
+### Self Challenge:
 
+_Find a way to only have to write na.rm once, rather than in each command._
+
+```{r Ex_sc}
+visitors %>% filter(!is.na(n_2021)) %>% summarise(mean_2021 = mean(n_2021),med_2021 = median(n_2021))
+```
 
 ## Question 7
 
