@@ -221,25 +221,25 @@ visitors %>%
 
 ### Exercise k.
 
-_Observe in question 6 that the mean statistics across all settings are much larger than the corresponding median statistics. Discuss in your group what this suggests about the data._
+_Observe in question 7 that the mean statistics across all settings are much larger than the corresponding median statistics. Discuss in your group what this suggests about the data._
 
-**Write your answer here**
+**The data is skewed (?)**
 
 ## Question 8
 
 ### Exercise l.
 
 ```{r Q8}
-#visitors %>% 
-#  summarise(
-#     __________,
-#     __________,
-#  )
+visitors %>% 
+  summarise(
+     max(n_2021,na.rm=TRUE),
+     min(n_2021,na.rm=TRUE),
+  )
 ```
 
 ## Question 9
 
-_What is the interquartile range (the width of the middle 50% of data set between the lower and upper quartiles) the for each of the four nations of the UK?_
+_What is the interquartile range (the width of the middle 50% of data set between the lower and upper quartiles) for each of the four nations of the UK?_
 
 ```{r Q9}
 visitors_with_nations <- visitors %>%
@@ -265,8 +265,8 @@ _How many tourist attractions are there in each of the 4 nations? From this, dis
 
 
 ```{r Ex_l}
-#________ %>%
-#  ______(_______)
+visitors_with_nations %>%
+  count(nation)
 ```
 
 
@@ -279,7 +279,7 @@ _Within each of the 4 nations, what is the proportion of tourist attractions tha
 
 ```{r Ex_m}
 # Write your code here
-
+visitors_with_nation %>% filter(admission=="Free")
 
 ```
 
